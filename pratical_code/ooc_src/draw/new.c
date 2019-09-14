@@ -1,20 +1,16 @@
 #include <assert.h>
 #include <stdarg.h>
-#include <stddef.h>
 #include <stdlib.h>
+#include "new.r"
 
-struct Class { 
-    size_t size;
-    void * (* ctor) (void * self, va_list * app); 
-    void * (* dtor) (void * self);
-    void (* draw) (const void * self);
-};
 
 void * new (const void * _class, ...) { 
     const struct Class * class = _class; 
+    // alloc object memory
     void * p = calloc(1, class -> size);
     assert(p);
     * (const struct Class **) p = class;
+    // call constructor
     if (class -> ctor) { 
         va_list ap;
         va_start(ap, _class);
@@ -26,6 +22,7 @@ void * new (const void * _class, ...) {
 
 void delete (void * self) { 
     const struct Class ** cp = self;
+    // call destructor
     if (self && * cp && (* cp) -> dtor) 
         self = (* cp) -> dtor(self);
     free(self);

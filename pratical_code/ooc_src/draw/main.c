@@ -1,5 +1,6 @@
 #include "Point.h" 
 #include "new.h"
+#include "stdio.h"
 
 int main (int argc, char ** argv) {
     void * p;
