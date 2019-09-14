@@ -16,7 +16,8 @@ fn main() {
     println!("In file {}", config.filename);
 
     if let Err(e) = minigrep::run(config) {
-        println!("Application error: {}", e);
+        // output to stderr
+        eprintln!("Application error: {}", e);
         process::exit(1);
     }
 }
