@@ -17,6 +17,7 @@ static void * Circle_ctor (void * _self, va_list * app) {
     return self;
 }
 
+// move() is reused.
 
 static const struct Class _Circle = {
     sizeof(struct Circle), 
@@ -25,4 +26,5 @@ static const struct Class _Circle = {
     Circle_draw
 };
 const void * Circle = & _Circle;
+
 
