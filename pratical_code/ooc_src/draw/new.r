@@ -2,6 +2,7 @@
 #define NEW_R
 
 #include <stddef.h>
+#include <stdarg.h>
 
 struct Class { 
     size_t size;

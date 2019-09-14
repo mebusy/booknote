@@ -2,13 +2,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stddef.h>
+
 #include "new.r"
+#include "Point.r"
 
-
-struct Point {
-    const void * class;
-    int x, y; /* coordinates */
-};
 
 // All these methods are static because 
 // they should only be called through new(), delete(), or the selectors.

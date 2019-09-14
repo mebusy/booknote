@@ -1,4 +1,5 @@
 #include "Point.h" 
+#include "Circle.h" 
 #include "new.h"
 #include "stdio.h"
 
@@ -9,6 +10,9 @@ int main (int argc, char ** argv) {
         switch (** argv) {
             case 'p':
                 p = new(Point, 1, 2); 
+                break;
+            case 'c':
+                p = new(Circle, 1, 2, 3); 
                 break;
             default: 
                 continue;
