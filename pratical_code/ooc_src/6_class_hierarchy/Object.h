@@ -1,15 +1,26 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef	OBJECT_H
+#define	OBJECT_H
 
-// define a class Object with the ability to 
-// create, destroy, compare, and display objects.
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdio.h>
 
-extern const void * Object; /* new(Object); */
-void * new (const void * class, ...); 
+extern const void * Object;		/* new(Object); */
+
+void * new (const void * class, ...);
 void delete (void * self);
-int differ (const void * self, const void * b); 
+
+const void * classOf (const void * self);
+size_t sizeOf (const void * self);
+
+void * ctor (void * self, va_list * app);
+void * dtor (void * self);
+int differ (const void * self, const void * b);
 int puto (const void * self, FILE * fp);
 
-extern const void * Class; /* new(Class, "name", super, size sel, meth, ... 0); */
+extern const void * Class;	/* new(Class, "name", super, size
+										sel, meth, ... 0); */
+
+const void * super (const void * self);	/* class' superclass */
 
 #endif
